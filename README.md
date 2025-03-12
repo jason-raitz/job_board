@@ -47,5 +47,7 @@ $ rspec
 
 At this point you may need to restart the whole thing or just run something like `$ docker compose exec -u root app bundle exec rails restart`.
 
+**To see the running app go to localhost:8081 in the host machine.**
+
 After that, either pull up the shell using docker desktop or something like:
 `$ docker compose exec -u root app bash`
