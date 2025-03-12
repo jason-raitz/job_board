@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_02_20_164023) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "employers", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -39,10 +42,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_164023) do
     t.string "url"
     t.text "description"
     t.string "description_markup"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "job_type"
     t.boolean "telecommute"
-    t.integer "employer_id"
+    t.bigint "employer_id"
     t.text "location"
     t.text "contact"
     t.boolean "published", default: false, null: false
@@ -61,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_164023) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -70,11 +73,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_164023) do
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
+    t.bigint "tag_id"
     t.string "taggable_type"
-    t.integer "taggable_id"
+    t.bigint "taggable_id"
     t.string "tagger_type"
-    t.integer "tagger_id"
+    t.bigint "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
@@ -117,8 +120,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_164023) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
@@ -130,7 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_164023) do
     t.integer "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
-    t.text "object", limit: 1073741823
+    t.text "object"
     t.datetime "created_at", precision: nil
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
