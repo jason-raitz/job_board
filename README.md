@@ -45,7 +45,7 @@ $ rspec
 4. `$ docker compose exec -u root app rake db:migrate`
 5. `$ docker compose exec -u root app rake db:seed`
 
-At this point you may need to restart the whole thing or just run something like `$ docker compose exec -u root app rails restart`.
+At this point you may need to restart the whole thing or just run something like `$ docker compose exec -u root app bundle exec rails restart`.
 
 After that, either pull up the shell using docker desktop or something like:
 `$ docker compose exec -u root app bash`
