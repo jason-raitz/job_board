@@ -31,3 +31,4 @@ old_jobs_data.each do |job|
     tag_list: job['subjects'].map { |x| x['name'] }.join(',')
   )
 end
+ActiveRecord::Base.connection.execute("SELECT setval('jobs_id_seq', (SELECT max(id) FROM jobs));")

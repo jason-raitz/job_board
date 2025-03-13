@@ -13,6 +13,10 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+  config.debug_exception_responses = true
+  config.log_level = :debug
+  config.active_support.deprecation = :log
+  config.active_record.verbose_query_logs = true
 
   # Enable server timing
   config.server_timing = true
