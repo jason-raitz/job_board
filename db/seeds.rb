@@ -32,3 +32,20 @@ old_jobs_data.each do |job|
   )
 end
 ActiveRecord::Base.connection.execute("SELECT setval('jobs_id_seq', (SELECT max(id) FROM jobs));")
+
+if Rails.env.development?
+  # Create a regular user
+  User.create!(
+    email: 'blah@blah.blah',
+    password: 'password',
+    password_confirmation: 'password'
+  )
+
+  # Create an admin user
+  user = User.create!(
+    email: 'admin@blah.blah',
+    password: 'password',
+    password_confirmation: 'password'
+  )
+  user.add_role :admin
+end
