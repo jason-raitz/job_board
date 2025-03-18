@@ -37,7 +37,8 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     respond_to do |format|
-      if verify_recaptcha_or_block && @job.save
+      # if verify_recaptcha_or_block && @job.save
+      if @job.save
         format.html { redirect_to @job }
         format.json { render :show, status: :created, location: @job }
       else

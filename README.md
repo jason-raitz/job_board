@@ -45,7 +45,16 @@ $ rspec
 4. `$ docker compose exec -u root app rake db:migrate`
 5. `$ docker compose exec -u root app rake db:seed`
 
-At this point you may need to restart the whole thing or just run something like `$ docker compose exec -u root app bundle exec rails restart`.
+### Dev user accounts
+If on development, two users will be created. This can be edited in the db/seeds.rb file.
+
+regular user:
+ - user: blah@blah.blah<br>
+   pass: password
+
+admin user:
+ - user: admin@blah.blah<br>
+   pass: password
 
 **To see the running app go to localhost:8081 in the host machine.**
 

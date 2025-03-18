@@ -3,6 +3,8 @@ FROM phusion/passenger-customizable:2.5.0
 RUN /pd_build/nodejs.sh
 RUN /pd_build/ruby-3.1.*.sh
 
+RUN apt-get update && apt-get install -y postgresql-client
+
 # Set correct environment variables.
 ENV HOME /root
 

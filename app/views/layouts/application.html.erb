@@ -36,7 +36,7 @@
           <% end %>
           <ul class="navbar-nav pull-right">
             <% if current_user %>
-              <%= nav_link 'Logout', destroy_user_session_path, method: :delete %>
+              <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-link' %>
             <% else %>
               <%= nav_link 'Login', user_login_path %>
             <% end %>
