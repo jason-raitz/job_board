@@ -91,7 +91,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  GA.tracker = Settings.analytics.tracking_id
+  # GA.tracker = Settings.analytics.tracking_id
 
   config.action_mailer.default_options = Settings.action_mailer.default_options.to_hash
   config.action_mailer.default_url_options = Settings.action_mailer.default_url_options.to_hash
